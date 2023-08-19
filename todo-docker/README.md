@@ -54,3 +54,4 @@ This version of the app is okay for learning about app architecture, but it is *
 * The API server talks to the database using the `root` user, which is bad. We should change these passwords and use a non-root user.
 * There's no user authentication. Users should be required to create an account and log in with a password. The database would need to keep track of user accounts in a `users` table.
 * We're serving both the web client and the API server with minimal, non-threaded server. Flask even warns us about this. We should use a production-ready server.
+* Using raw JavaScript for the client is old-fashioned and inflexible. You may want to use a modern framework such as React or Vue.
