@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script src="todo-local.js"></script>
+    <link rel="stylesheet" href="todo-local.css">
+    <title>To-Do</title>
+  </head>
+  <body onload="rerender()">
+    <div class="app">
+        <div class="title">To-Do List</div>
+        <div class="controls">
+            <div class="button" onclick="onAdd()">+</div>
+        </div>
+        <div class="thelist" id="thelist">
+        </div>
+    </div>
+  </body>
+</html>
