@@ -8,16 +8,6 @@
     The current list of items is stored in the_list.
     Items are persisted in a cookie named appState.
 
-    Limitations:
-        Because state is stored in a cookie, your
-        list is not accessible on other devices
-        and will be destroyed if you clear your cookies.
-        Depending on your browser config, closing
-        the window may also wipe out cookies.
-
-        Also, cookies have a maximum size of 4096 bytes,
-        meaning that larger to-do lists are impossible.
-
 */
 
 var the_list = getState([]);

@@ -5,7 +5,8 @@ Starting
 -------
 1. Install docker and docker-compose
 2. Run `docker-compose up --build -d` from this directory
-3. You *are* using Linux, right?
+3. Open `http://localhost:5003` in your web browser
+4. You *are* using Linux, right?
 
 Stopping
 --------
@@ -44,14 +45,15 @@ docker logs todo_api_container  -f
 
 Type Ctrl-C to exit log listing.
 
-Production
+Limitations
 ---------
 This version of the app is okay for learning about app architecture, but it is *not* suitable for use in a real, live, public-facing production system. Here are some things that would need to be addressed before this could be made public:
 
 * The site would have to be hosted somewhere. We could serve from an Amazon EC2 instance, for example.
 * You'd probably want a domain name, like `the-todo-app.com`, which would point to your hosting service.
-* The app is served over un-encrypted HTTP, it should use HTTPS. For that we'd need a proxy like nginx and appropriate certificates.
+* The app is served over un-encrypted HTTP, it should use HTTPS. For that, we'd need a proxy like nginx and appropriate certificates.
+* Depending on the load you expect the app to get, you may want multiple app servers, and therefore a load balancer between them.
 * The API server talks to the database using the `root` user, which is bad. We should change these passwords and use a non-root user.
 * There's no user authentication. Users should be required to create an account and log in with a password. The database would need to keep track of user accounts in a `users` table.
-* We're serving both the web client and the API server with minimal, non-threaded server. Flask even warns us about this. We should use a production-ready server.
+* We're serving both the web client and the API server with minimal, non-threaded server. Flask even warns us about this. We should use a production-ready server like `gunicorn`.
 * Using raw JavaScript for the client is old-fashioned and inflexible. You may want to use a modern framework such as React or Vue.
