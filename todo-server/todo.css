@@ -101,3 +101,22 @@ body {
 .listitem > .text {
     flex-grow: 1;
 }
+
+
+/*
+  Show "No items" message when
+  list is empty.
+*/
+.thelist + .emptymarker {
+  display: none;
+  text-align: center;
+  color: green;
+  font-size: 150%;
+  margin: 20px;
+  font-family: sans-serif;
+  border: 2px dashed black;
+}
+
+.thelist:empty + .emptymarker {
+  display: block;
+}
