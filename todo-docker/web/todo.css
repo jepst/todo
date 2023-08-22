@@ -1,3 +1,6 @@
+/*
+  Window background
+*/
 body {
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
@@ -5,6 +8,10 @@ body {
     height: 100%;
 }
 
+
+/*
+  Central app panel
+*/
 .app {
   background: rgb(114,109,209);
   background: linear-gradient(180deg, rgba(114,109,209,1) 9%, rgba(156,156,167,1) 50%, rgba(212,212,212,1) 100%); 
@@ -17,11 +24,19 @@ body {
 
 }
 
+
+/*
+  Main app title
+*/
 .title {
     text-align: center;
     font-size: 150%;
 }
 
+
+/*
+  Button appearance
+*/
 .button {
   display: inline-block;
   height: 38px;
@@ -42,12 +57,39 @@ body {
   box-sizing: border-box;
 }
 
+
+/*
+  Make button sparkle when mosue over
+*/
 .button:hover, .button:focus {
   color: #333;
   border-color: #888;
   outline: 0;
 }
 
+
+/*
+  Make the delete button
+  disappear from the list
+  item when your mouse isn't
+  over it.
+*/
+.listitem .button {
+  visibility: hidden;
+  opacity: 0%;
+  transition: opacity 0.4s linear;
+}
+
+.listitem:hover .button {
+  visibility: visible;
+  opacity: 100%;
+}
+
+
+/*
+  Force the delete button to
+  the right of the list item
+*/
 .listitem {
     margin: 10px;
     padding: 10px;
