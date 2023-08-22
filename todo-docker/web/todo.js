@@ -76,17 +76,19 @@ function onAdd() {
     Update current user's list on the server
 */
 function setState(state) {
-    fetch("http://localhost:5000/api/set_list", {
-        method: "POST", 
-        cache: "no-cache", 
-        headers: {
-            "Content-Type": "application/json",
-            "username": getUserName(),
-        },        
-        body: JSON.stringify({
-            the_list: the_list
-        })
-    });
+    if (getUserName(null) != null) {
+        fetch("http://localhost:5000/api/set_list", {
+            method: "POST", 
+            cache: "no-cache", 
+            headers: {
+                "Content-Type": "application/json",
+                "username": getUserName(),
+            },        
+            body: JSON.stringify({
+                the_list: the_list
+            })
+        });
+    }
 }
 
 
@@ -96,15 +98,17 @@ function setState(state) {
 */
 function getState(deflt) {
     login();
-    fetch("http://localhost:5000/api/get_list", {
-            method: "GET", 
-            cache: "no-cache",
-            headers: {
-                "username": getUserName(),
-            },        
-        }).
-        then(result => result.json()).
-        then(json => { the_list = json; rerender(); });
+    if (getUserName(null) != null) {
+        fetch("http://localhost:5000/api/get_list", {
+                method: "GET", 
+                cache: "no-cache",
+                headers: {
+                    "username": getUserName(),
+                },        
+            }).
+            then(result => result.json()).
+            then(json => { the_list = json; rerender(); });
+    }
 }
 
 
@@ -116,6 +120,8 @@ function login() {
         var name;
         while (true) {
             name = prompt("Please enter your username", "");
+            if (name == null)
+                continue;
             if (name.length<3) {
                 alert("Username must be at least 3 characters");
                 continue;
